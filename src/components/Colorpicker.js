@@ -14,6 +14,9 @@ const Colorpicker = () => {
     setSaturation(Math.ceil(Math.random() * 100))
     setLightness(Math.ceil(Math.random() * 100))
   }
+  useEffect(() => {
+    setRandomColor()
+  }, [])
 
   return (
     <div id="container">
@@ -53,7 +56,6 @@ const Colorpicker = () => {
         <p>{'Alpha: ' + `${Alpha}`}</p>
 
         <div
-          onLoad={setRandomColor}
           className="displayColor"
           value="50"
           style={{
