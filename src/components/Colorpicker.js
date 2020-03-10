@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-// function randomColor() {
-//   let random = Math.ceil(Math.random() * 255)
-// }
 const Colorpicker = () => {
   const [Hue, setHue] = useState(0)
   const [Saturation, setSaturation] = useState(0)
@@ -20,7 +17,18 @@ const Colorpicker = () => {
 
   return (
     <div id="container">
-      <h1>Color Picker with Hooks</h1>
+      <h1> HSL Color Picker</h1>
+      <div className="right">
+
+        <div
+          className="displayColor"
+          value="50"
+          style={{
+            backgroundColor: `Hsl(${Hue}, ${Saturation}%, ${Lightness}%, ${Alpha}%)`
+          }}>
+          <button onClick={setRandomColor}>Random color</button>
+        </div>
+      </div>
       <div className="slider">
         <input
           max="360"
@@ -29,7 +37,7 @@ const Colorpicker = () => {
             setHue(hue.target.value)
           }}
         />
-        <p>{'Hue: ' + `${Hue}`}</p>
+        <p className="description">{'Hue: ' + `${Hue}`}</p>
 
         <input
           type="range"
@@ -37,7 +45,7 @@ const Colorpicker = () => {
             setSaturation(saturation.target.value)
           }}
         />
-        <p>{'Saturation: ' + `${Saturation}`}</p>
+        <p className="description">{'Saturation: ' + `${Saturation}`}</p>
 
         <input
           type="range"
@@ -45,7 +53,7 @@ const Colorpicker = () => {
             setLightness(lightness.target.value)
           }}
         />
-        <p>{'Lightness: ' + `${Lightness}`}</p>
+        <p className="description">{'Lightness: ' + `${Lightness}`}</p>
 
         <input
           type="range"
@@ -53,17 +61,10 @@ const Colorpicker = () => {
             setAlpha(alpha.target.value)
           }}
         />
-        <p>{'Alpha: ' + `${Alpha}`}</p>
+        <p className="description">{'Alpha: ' + `${Alpha}`}</p>
 
-        <div
-          className="displayColor"
-          value="50"
-          style={{
-            backgroundColor: `Hsl(${Hue}, ${Saturation}%, ${Lightness}%, ${Alpha}%)`
-          }}
-        ></div>
+        <p>HSLA: ({Hue}, {Saturation}%, {Lightness}%, {Alpha}%)</p>
       </div>
-      <button onClick={setRandomColor}>Random color</button>
     </div>
   )
 }
